@@ -1,0 +1,14 @@
+<% @positions.each do |position| %>
+  <div>
+    <h1><%= position.title %></h1>
+    <% if logged_in? %>
+      <%= link_to "Edit", edit_position_url(position) %>
+    <% end %>
+    <p><%= position.description %></p>
+    <p>Posted on <%= Time.at(position.created_at).strftime("%m/%d/%Y") %></p>
+  </div>
+  
+  <% if !logged_in? %>
+    <%= link_to "Apply", new_job_app_url %>
+  <% end %>
+<% end %>

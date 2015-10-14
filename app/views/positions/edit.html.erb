@@ -1,0 +1,7 @@
+<%= form_for @position do |position_form| %>
+  <%= label_tag :title %>
+  <%= position_form.text_field :title %>
+  <%= label_tag :description %>
+  <%= position_form.text_area :description %>
+  <%= position_form.submit %>
+<% end %>

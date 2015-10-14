@@ -1,0 +1,9 @@
+<%= form_for @job_app do |job_app_form| %>
+  <h1><%= @job_app.name %></h1>
+  <%= job_app_form.select :status, ['new', 'contacted', 'interviewed', 'rejected'] %>
+  <div><%= @job_app.data %></div>
+  <%= job_app_form.text_area :notes %>
+  <%= job_app_form.submit %>
+<% end %>
+
+<%= link_to "Back", job_apps_url %>

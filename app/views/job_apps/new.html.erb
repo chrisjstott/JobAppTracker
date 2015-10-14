@@ -1,0 +1,9 @@
+<%= form_for @job_app do |job_app_form| %>
+  <%= label_tag :name %>
+  <%= job_app_form.text_field :name %>
+  
+  <%= label_tag :data, "Paste resume here" %>
+  <%= job_app_form.text_area :data %>
+  
+  <%= job_app_form.submit "Submit application" %>
+<% end %>

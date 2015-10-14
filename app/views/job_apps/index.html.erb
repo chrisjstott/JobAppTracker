@@ -1,0 +1,12 @@
+<%= link_to "Edit Job Listings", positions_url %>
+
+<table>
+  <tr><th>Name</th><th>Status</th><th></th></tr>
+  <% @job_apps.each do |job_app| %>
+    <tr>
+      <td><%= job_app.name %></td>
+      <td><%= job_app.status %></td>
+      <td><%= link_to "Details", job_app %></td>
+    </tr>
+  <% end %>
+</table>
