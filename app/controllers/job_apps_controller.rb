@@ -8,6 +8,7 @@ class JobAppsController < ApplicationController
   
   def new
     @job_app = JobApp.new
+    @positions = Position.all
     render :new
   end
   
