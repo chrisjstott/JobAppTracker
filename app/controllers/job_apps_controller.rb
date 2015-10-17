@@ -14,7 +14,7 @@ class JobAppsController < ApplicationController
       attributes.where(group: "Personal Information"),
       attributes.where(group: "Education"),
       attributes.where(group: "Experience"),
-      # attributes.where(group: "Employment"),
+      attributes.where(group: "Employment"),
       attributes.where(group: "References")
     ]
     render :new
@@ -53,7 +53,7 @@ class JobAppsController < ApplicationController
   
 private
   def job_app_params_user
-    params.require(:job_app).permit(:name, :data)
+    params.require(:job_app).permit!.except(:status, :notes)
   end
   
   def job_app_params_admin
