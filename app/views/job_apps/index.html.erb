@@ -7,7 +7,7 @@
   <tr><th>Name</th><th>Status</th><th></th></tr>
   <% @job_apps.each do |job_app| %>
     <tr>
-      <td><%= job_app.name %></td>
+      <td><%= job_app.first_name + " " + job_app.last_name %></td>
       <td><%= job_app.status %></td>
       <td><%= link_to "Details", job_app %></td>
     </tr>
