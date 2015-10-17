@@ -1,6 +1,9 @@
-<%= link_to "Edit Job Listings", positions_url %>
-
-<table>
+<h3><%= link_to "Edit Job Listings", positions_url %></h3>
+<h3><%= link_to "Edit Job Application Form", attributes_url %></h3>
+<br><br>
+<h2>Incoming Job Applications:</h2>
+<% if @job_apps.any? %>
+  <table class="incoming-apps">
   <tr><th>Name</th><th>Status</th><th></th></tr>
   <% @job_apps.each do |job_app| %>
     <tr>
@@ -9,4 +12,7 @@
       <td><%= link_to "Details", job_app %></td>
     </tr>
   <% end %>
-</table>
+  </table>
+<% else %>
+  No one has applied yet!
+<% end %>

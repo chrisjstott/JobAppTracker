@@ -40,3 +40,7 @@ button {
 input[type="submit"] {
   @extend button;
 }
+
+.incoming-apps th {
+  min-width:200px;
+}
