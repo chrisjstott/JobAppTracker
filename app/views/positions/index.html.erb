@@ -4,7 +4,7 @@
     <% if logged_in? %>
       <%= link_to "Edit", edit_position_url(position) %>
     <% end %>
-    <p><%= position.description %></p>
+    <%= simple_format(position.description) %>
     <p>Posted on <%= Time.at(position.created_at).strftime("%m/%d/%Y") %></p>
   </div>
   
