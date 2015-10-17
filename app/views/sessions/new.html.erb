@@ -1,7 +1,13 @@
-<%= form_tag "/session", method: "POST" do %>
-  <%= label_tag :user_username, "Username" %>
-  <%= text_field :user, :username %>
-  <%= label_tag :user_password, "Password" %>
-  <%= password_field :user, :password %>
-  <%= submit_tag "Log in" %>
+<%= form_tag "/session", method: "POST", class: "form-horizontal" do %>
+  <div class="form-group">
+    <%= label_tag :user_username, "Username", class: "col-sm-1 col-sm-offset-4" %>
+    <div class="col-sm-2"><%= text_field :user, :username, class: "form-control" %></div>
+  </div>
+  <div class="form-group">
+    <%= label_tag :user_password, "Password", class: "col-sm-1 col-sm-offset-4" %>
+    <div class="col-sm-2"><%= password_field :user, :password, class: "form-control" %></div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-6"><%= submit_tag "Log in" %></div>
+  </div>
 <% end %>
