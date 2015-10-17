@@ -2,7 +2,7 @@
 
 <%= form_tag attributes_path, method: "patch" do %>
   <% @attribute_groups.each do |attributes| %>
-    <% if attribute.any? %>
+    <% if attributes.any? %>
       <h3><%= attributes.first.group %></h3>
       <% attributes.each do |attribute| %>
         <%= fields_for "attributes[]", attribute do |f| %>
