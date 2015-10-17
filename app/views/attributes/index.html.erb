@@ -2,23 +2,25 @@
 
 <%= form_tag attributes_path, method: "patch" do %>
   <% @attribute_groups.each do |attributes| %>
-  <h3><%= attributes.first.group %></h3>
-    <% attributes.each do |attribute| %>
-      <%= fields_for "attributes[]", attribute do |f| %>
-        <%= f.check_box :active %>
-        <%= f.label :active, attribute.full_text %>
-        
-        <% if attribute.input_type == "select" %>
-          <div class="row">
-            <div class="attribute-select-options">
-              <%= f.label :options, "Enter options separated by commas" %>
-              <%= f.text_field :options, class: "form-control" %>
+    <% if attribute.any? %>
+      <h3><%= attributes.first.group %></h3>
+      <% attributes.each do |attribute| %>
+        <%= fields_for "attributes[]", attribute do |f| %>
+          <%= f.check_box :active %>
+          <%= f.label :active, attribute.full_text %>
+          
+          <% if attribute.input_type == "select" %>
+            <div class="row">
+              <div class="attribute-select-options">
+                <%= f.label :options, "Enter options separated by commas" %>
+                <%= f.text_field :options, class: "form-control" %>
+              </div>
             </div>
-          </div>
+          <% end %>
+          
         <% end %>
-        
+        <br>
       <% end %>
-      <br>
     <% end %>
   <% end %>
   
