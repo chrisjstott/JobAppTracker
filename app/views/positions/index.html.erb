@@ -8,7 +8,8 @@
     <p>Posted on <%= Time.at(position.created_at).strftime("%m/%d/%Y") %></p>
   </div>
   
-  <% if !logged_in? %>
-    <%= link_to "Apply", new_job_app_url %>
-  <% end %>
+<% end %>
+
+<% if !logged_in? %>
+  <%= button_to "Apply", new_job_app_url, method: :get %>
 <% end %>
