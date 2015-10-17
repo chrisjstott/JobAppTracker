@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   resources :job_apps
   resources :positions
   resource :session, only: [:new, :create, :destroy]
+  resources :attributes, only: [:index] do
+    patch :update, on: :collection
+  end
 
 end
 

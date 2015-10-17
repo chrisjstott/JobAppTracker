@@ -1,5 +1,5 @@
 class JobApp < ActiveRecord::Base
-  validates :name, :status, :data, presence: true
+  validates :name, :status, presence: true
   
   belongs_to :position
   has_many :work_histories

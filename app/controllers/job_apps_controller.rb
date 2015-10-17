@@ -9,6 +9,14 @@ class JobAppsController < ApplicationController
   def new
     @job_app = JobApp.new
     @positions = Position.all
+    attributes = Attribute.where(active: true).order(:id)
+    @attribute_groups = [
+      attributes.where(group: "Personal Information"),
+      attributes.where(group: "Education"),
+      attributes.where(group: "Experience"),
+      # attributes.where(group: "Employment"),
+      attributes.where(group: "References")
+    ]
     render :new
   end
   

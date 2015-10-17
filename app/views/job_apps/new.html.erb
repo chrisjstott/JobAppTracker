@@ -1,13 +1,26 @@
-<%= form_for @job_app do |job_app_form| %>
-  <%= label_tag :name %>
-  <%= job_app_form.text_field :name %>
-  
-  <% @positions.each do |position| %>
-    <%= job_app_form.collection_select :position_id, @positions, :id, :title %>
+<%= form_for @job_app do |f| %>
+  <% @attribute_groups.each do |attributes| %>
+  <div class="col-sm-12"><h3><%= attributes.first.group %></h3></div>
+  <% attributes.each do |attribute| %>
+    <% case attribute.input_type %>
+    <% when "text" %>
+      <div class="form-group col-md-4 col-sm-6">
+        <%= f.label attribute.name, attribute.full_text %>
+        <%= f.text_field attribute.name, class: "form-control" %>
+      </div>
+    <% when "checkbox" %>
+      <div class="form-group col-sm-12">
+        <%= f.check_box attribute.name %>
+        <%= f.label attribute.name, attribute.full_text %>
+      </div>
+    <% when "select" %>
+      <div class="form-group col-md-4 col-sm-6">
+        <%= f.label attribute.name, attribute.full_text %>
+        <%= f.select(attribute.name, attribute.options.split(','), {}, class: "form-control") %>
+      </div>
+    <% else %>
+      <p><%= attribute.full_text %>: UNAVAILABLE</p>
+    <% end %>
   <% end %>
-  
-  <%= label_tag :data, "Paste resume here" %>
-  <%= job_app_form.text_area :data %>
-  
-  <%= job_app_form.submit "Submit application" %>
+  <% end %>
 <% end %>
