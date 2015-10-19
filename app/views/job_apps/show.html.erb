@@ -1,7 +1,9 @@
 <%= form_for @job_app do |job_app_form| %>
-  <h1><%= @job_app.name %></h1>
+  <h1><%= @job_app.first_name %></h1>
   <%= job_app_form.select :status, ['new', 'contacted', 'interviewed', 'rejected'] %>
-  <div><%= @job_app.data %></div>
+  <% @attributes.each do |attribute| %>
+    <div><%= attribute.full_text + ": " + @job_app.send(attribute.name).to_s %></div>
+  <% end %>
   <%= job_app_form.text_area :notes %>
   <%= job_app_form.submit %>
 <% end %>

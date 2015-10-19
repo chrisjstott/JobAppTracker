@@ -33,6 +33,7 @@ class JobAppsController < ApplicationController
   
   def show
     @job_app = JobApp.find(params[:id])
+    @attributes = Attribute.where(active: true)
     render :show
   end
   
