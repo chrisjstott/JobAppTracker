@@ -16,40 +16,39 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
-<body>
 
-<header>
-  <div class="login-logout">
-    <% if logged_in? %>
-      <%= button_to "Logout", session_url, method: :delete %>
-    <% else %>
-      <%= button_to "Log In", new_session_url, method: :get %>
-    <% end %>
-  </div>
-</header>
-
-
-<div style="padding:30px;"
-  <% if flash.now[:errors] %>
-    <ul>
-      <% flash.now[:errors].each do |error| %>
-        <li><%= error %></li>
+  <body>
+    <header class="container-fluid">
+      <div class="row">
+      <div class="col-md-12 login-logout">
+      <% if logged_in? %>
+        <%= button_to "Logout", session_url, method: "delete" %>
+      <% else %>
+        <%= link_to "Log In", new_session_url, class: "button" %>
       <% end %>
-    </ul>
-  <% end %>
-  
-  <% if flash.now[:messages] %>
-    <ul>
-      <% flash.now[:messages].each do |message| %>
-        <li><%= message %></li>
+      </div>
+      </div>
+    </header>
+    
+    
+    <main class="container-fluid">
+      <% if flash.now[:errors] %>
+        <ul>
+          <% flash.now[:errors].each do |error| %>
+            <li><%= error %></li>
+          <% end %>
+        </ul>
       <% end %>
-    </ul>
-  <% end %>
-  
-  <div class="container-fluid">
-    <%= yield %>
-  </div>
-</div>
-
-</body>
+      
+      <% if flash.now[:messages] %>
+        <ul>
+          <% flash.now[:messages].each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      <% end %>
+      
+      <%= yield %>
+    </main>
+  </body>
 </html>

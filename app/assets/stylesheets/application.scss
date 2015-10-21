@@ -23,24 +23,24 @@
 }
 
 header {
-  height:80px;
-  padding:15px;
+  // height:80px;
   background-color:navy;
 }
 
-.login-logout {
-  float: right;
-}
-
-button {
+.button {
   @extend .btn;
   @extend .btn-default;
 }
 
 input[type="submit"] {
-  @extend button;
+  @extend .button;
 }
 
 .incoming-apps th {
   min-width:200px;
+}
+
+.login-logout .button {
+  margin: 25px 0;
+  float: right;
 }
