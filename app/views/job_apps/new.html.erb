@@ -1,29 +1,37 @@
 <%= form_for @job_app do |f| %>
   <% @attribute_groups.each do |attributes| %>
     <% if attributes.any? %>
-      <div class="col-sm-12"><h3><%= attributes.first.group %></h3></div>
-      <% attributes.each do |attribute| %>
-        <% case attribute.input_type %>
-        <% when "text" %>
-          <div class="form-group col-md-4">
-            <%= f.label attribute.name, attribute.full_text %>
-            <%= f.text_field attribute.name, class: "form-control" %>
-          </div>
-        <% when "checkbox" %>
-          <div class="form-group col-sm-12">
-            <%= f.check_box attribute.name %>
-            <%= f.label attribute.name, attribute.full_text %>
-          </div>
-        <% when "select" %>
-          <div class="form-group col-md-4">
-            <%= f.label attribute.name, attribute.full_text %>
-            <%= f.select(attribute.name, attribute.options.split(','), {}, class: "form-control") %>
-          </div>
-        <% else %>
-          <p><%= attribute.full_text %>: UNAVAILABLE</p>
+      <div class="row">
+        <div class="col-sm-12">
+          <h3><%= attributes.first.group %></h3>
+        </div>
+        <% attributes.each do |attribute| %>
+          <% case attribute.input_type %>
+          <% when "text" %>
+            <div class="form-group col-md-4">
+              <%= f.label attribute.name, attribute.full_text %>
+              <%= f.text_field attribute.name, class: "form-control" %>
+            </div>
+          <% when "checkbox" %>
+            <div class="form-group col-sm-12">
+              <%= f.check_box attribute.name %>
+              <%= f.label attribute.name, attribute.full_text %>
+            </div>
+          <% when "select" %>
+            <div class="form-group col-md-4">
+              <%= f.label attribute.name, attribute.full_text %>
+              <%= f.select(attribute.name, attribute.options.split(','), {}, class: "form-control") %>
+            </div>
+          <% else %>
+            <p><%= attribute.full_text %>: UNAVAILABLE</p>
+          <% end %>
         <% end %>
-      <% end %>
+      </div>
     <% end %>
   <% end %>
-  <%= submit_tag %>
+  <div class="row">
+    <div class="col-md-12">
+      <%= submit_tag %>
+    </div>
+  </div>
 <% end %>
