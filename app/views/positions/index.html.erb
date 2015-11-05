@@ -1,15 +1,17 @@
 <% @positions.each do |position| %>
-  <div>
+  <div class="panel panel-default job-listing-panel" style="margin-top:20px;">
+    <div class="panel-body">
     <h1><%= position.title %></h1>
     <% if logged_in? %>
       <%= link_to "Edit", edit_position_url(position) %>
     <% end %>
-    <%= simple_format(position.description) %>
-    <p>Posted on <%= Time.at(position.created_at).strftime("%m/%d/%Y") %></p>
+    <div class="job-listing-details"><%= simple_format(position.description) %>
+    Posted on <%= Time.at(position.created_at).strftime("%m/%d/%Y") %></div>
+    </div>
   </div>
   
 <% end %>
 
 <% if !logged_in? %>
-  <%= button_to "Apply", new_job_app_url, method: :get %>
+  <%= link_to "Apply", new_job_app_url, class: "button" %>
 <% end %>
